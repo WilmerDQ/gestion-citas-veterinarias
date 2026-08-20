@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar código
+        uses: actions/checkout@v4
+
+      - name: Verificar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verificar estructura
+        run: |
+          echo "Repositorio: Gestión de Citas Veterinarias"
+          echo "Pipeline ejecutado correctamente"
+          test -f README.md
+          test -f .gitignore
